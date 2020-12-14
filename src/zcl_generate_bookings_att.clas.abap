@@ -10,7 +10,9 @@ CLASS zcl_generate_bookings_att DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_generate_bookings_att IMPLEMENTATION.
+
+CLASS ZCL_GENERATE_BOOKINGS_ATT IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
     DATA:it_bookings TYPE TABLE OF ztbooking_att.
@@ -27,7 +29,7 @@ CLASS zcl_generate_bookings_att IMPLEMENTATION.
 
 *   Delete the possible entries in the database table - in case it was already filled
     DELETE FROM ztbooking_att.
-*   insert the new table entries
+*   Insert the new table entries
     INSERT ztbooking_att FROM TABLE @it_bookings.
 
 *   check the result
@@ -36,5 +38,4 @@ CLASS zcl_generate_bookings_att IMPLEMENTATION.
     out->write( 'data inserted successfully!').
 
   ENDMETHOD.
-
 ENDCLASS.
